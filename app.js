@@ -1,12 +1,12 @@
 let name, id, plates, price, newName;
 
 //car builder
-function newCar(name, id, plates, price){
+function newCar(name, id, plates, price) {
     id = "CAR" + Math.floor((Math.random() * 1000));
     this.name = name;
     this.id = id;
-    this.plates =  plates + "-" +Math.floor((Math.random() * 1000));
-    this.price = price + "$";    
+    this.plates = plates + "-" + Math.floor((Math.random() * 1000));
+    this.price = price + "$";
 }
 
 var Mitsubishi = new newCar("Mitsubishi", 0, "DMX", 3000);
@@ -18,9 +18,9 @@ var Fiat = new newCar("Fiat", 0, "CHI", 8999);
 var cars = [Mitsubishi, Mercedes, Jaguar, Porshe, Fiat];
 
 //getters
-var addCarButton = document.getElementById("add_button");
+var selectCarButton = document.getElementById("add_button");
 var selectorCar = document.getElementById('inputGroupSelect');
- 
+
 var carId = document.getElementById('carId');
 var carPlate = document.getElementById('carPlate');
 var carPrice = document.getElementById('carPrice');
@@ -34,70 +34,82 @@ var button3 = document.getElementById("blue");
 carImg.style.display = "none";
 
 //listeners
-addCarButton.addEventListener('click', addCar);
-button1.addEventListener('click', changeColor);
-button2.addEventListener('click', changeColor);
-button3.addEventListener('click', changeColor);
+selectCarButton.addEventListener('click', selectCar);
+button1.addEventListener('click', carColorChange);
+button2.addEventListener('click', carColorChange);
+button3.addEventListener('click', carColorChange);
 //functions
 
 console.log(cars)
 
-function addCar(e){
+function selectCar(e) {
     carId.value = " ";
-    
+    //car index is taking id from checklist and pick by index cars name
     let carIndex = selectorCar.value;
     let chosenCar = cars[carIndex];
-    
-    carId.value = chosenCar.id;
-    carPlate.value = chosenCar.plates;
-    carPrice.value = chosenCar.price;
 
-    if(chosenCar.name == "Mercedes"){;
+    addToInputs(chosenCar)    ;
+    e.preventDefault();
+}
+
+function addToInputs(chosenCar){
+     //add chosen cars value to inputs
+     carId.value = chosenCar.id;
+     carPlate.value = chosenCar.plates;
+     carPrice.value = chosenCar.price;
+     showCarImage(chosenCar);
+}
+
+function showCarImage(chosenCar) {
+   
+    if (chosenCar.name == "Mercedes") {
+        ;
         carImg.src = "mercedes-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
-    else if(chosenCar.name == "Mitsubishi"){;
+    else if (chosenCar.name == "Mitsubishi") {
+        ;
         carImg.src = "mitsubishi-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
-    else if(chosenCar.name == "Jaguar"){;
+    else if (chosenCar.name == "Jaguar") {
+        ;
         carImg.src = "jaguar-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
-    else if(chosenCar.name == "Fiat"){;
+    else if (chosenCar.name == "Fiat") {
+        ;
         carImg.src = "fiat-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
-    else{
+    else {
         carImg.src = "lambo-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
-    e.preventDefault();
 }
 
-function setCarName(name){
+function setCarName(name) {
     this.name = name;
     newName = name;
     return newName;
 }
-
 console.log(carImg.src);
-function changeColor(e){
-        if(e.target.id=="white"){
-        carImg.src =newName+"-"+ button1.id +".png";
-       console.log(carImg.src);
-    }
-        else if(e.target.id=="red"){
-        carImg.src = newName +"-"+ button2.id +".png";
+function carColorChange(e) {
+    if (e.target.id == "white") {
+        carImg.src = newName + "-" + button1.id + ".png";
         console.log(carImg.src);
     }
-    else{
-        carImg.src = newName + "-"+ button3.id +".png";
+    else if (e.target.id == "red") {
+        carImg.src = newName + "-" + button2.id + ".png";
+        console.log(carImg.src);
+    }
+    else {
+        carImg.src = newName + "-" + button3.id + ".png";
         console.log(carImg.src);
     }
 }
