@@ -40,6 +40,7 @@ selectCarButton.addEventListener('click', selectCar);
 button1.addEventListener('click', carColorChange);
 button2.addEventListener('click', carColorChange);
 button3.addEventListener('click', carColorChange);
+submitBtn.addEventListener('click', checkOut);
 
 hide();
 //functions
@@ -128,4 +129,30 @@ function show(){
     hidden.forEach(function(hidd){
         hidd.style.display = "block";
     });
+}
+
+function checkOut(){
+    //do poprawy shit done...
+    var carColor = carImg.src;
+    
+    if(newName == "jaguar"){
+    var cut = carColor.slice(29,carColor.length-4);
+    console.log(cut);
+    }
+    else if(newName == "lambo"){
+        var cut = carColor.slice(28,carColor.length-4);
+        console.log(cut); 
+    }
+    else if(newName == "fiat"){
+        var cut = carColor.slice(27,carColor.length-4);
+        console.log(cut); 
+    }
+    else if(newName == "mercedes"){
+        var cut = carColor.slice(31,carColor.length-4);
+        console.log(cut); 
+    }
+    else if(newName == "mitsubishi"){
+        var cut = carColor.slice(33,carColor.length-4);
+        console.log(cut); 
+    }
 }
