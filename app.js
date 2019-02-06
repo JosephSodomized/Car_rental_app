@@ -26,13 +26,14 @@ var carPlate = document.getElementById('carPlate');
 var carPrice = document.getElementById('carPrice');
 
 var carImg = document.querySelector(".car-img");
+var hidden = document.querySelectorAll(".hide");
 
 var button1 = document.getElementById("white");
 var button2 = document.getElementById("red");
 var button3 = document.getElementById("blue");
 
 carImg.style.display = "none";
-
+hide();
 //listeners
 selectCarButton.addEventListener('click', selectCar);
 button1.addEventListener('click', carColorChange);
@@ -48,20 +49,20 @@ function selectCar(e) {
     let carIndex = selectorCar.value;
     let chosenCar = cars[carIndex];
 
-    addToInputs(chosenCar)    ;
+    addToInputs(chosenCar);
+    show();
     e.preventDefault();
 }
 
-function addToInputs(chosenCar){
-     //add chosen cars value to inputs
-     carId.value = chosenCar.id;
-     carPlate.value = chosenCar.plates;
-     carPrice.value = chosenCar.price;
-     showCarImage(chosenCar);
+function addToInputs(chosenCar) {
+    //add chosen cars value to inputs
+    carId.value = chosenCar.id;
+    carPlate.value = chosenCar.plates;
+    carPrice.value = chosenCar.price;
+    showCarImage(chosenCar);
 }
 
 function showCarImage(chosenCar) {
-   
     if (chosenCar.name == "Mercedes") {
         ;
         carImg.src = "mercedes-white.png"
@@ -100,6 +101,7 @@ function setCarName(name) {
 }
 console.log(carImg.src);
 function carColorChange(e) {
+    //nadanie nazwy ścieki według wciśniętego przycisku i nadanej nazwy
     if (e.target.id == "white") {
         carImg.src = newName + "-" + button1.id + ".png";
         console.log(carImg.src);
@@ -112,4 +114,16 @@ function carColorChange(e) {
         carImg.src = newName + "-" + button3.id + ".png";
         console.log(carImg.src);
     }
+}
+
+function hide(){
+    hidden.forEach(function(hidd){
+        hidd.style.display = "none";
+    });
+}
+
+function show(){
+    hidden.forEach(function(hidd){
+        hidd.style.display = "block";
+    });
 }
