@@ -21,30 +21,30 @@ var cars = [Mitsubishi, Mercedes, Jaguar, Porshe, Fiat];
 var selectCarButton = document.getElementById("add_button");
 var selectorCar = document.getElementById('inputGroupSelect');
 
-var carId = document.getElementById('carId');
+// var carId = document.getElementById('carId');
 var carPlate = document.getElementById('carPlate');
 var carPrice = document.getElementById('carPrice');
 
 var carImg = document.querySelector(".car-img");
 var hidden = document.querySelectorAll(".hide");
+var submitBtn = document.querySelector(".submit");
 
 var button1 = document.getElementById("white");
 var button2 = document.getElementById("red");
 var button3 = document.getElementById("blue");
 
 carImg.style.display = "none";
-hide();
+
 //listeners
 selectCarButton.addEventListener('click', selectCar);
 button1.addEventListener('click', carColorChange);
 button2.addEventListener('click', carColorChange);
 button3.addEventListener('click', carColorChange);
+
+hide();
 //functions
-
-console.log(cars)
-
 function selectCar(e) {
-    carId.value = " ";
+    // carId.value = " ";
     //car index is taking id from checklist and pick by index cars name
     let carIndex = selectorCar.value;
     let chosenCar = cars[carIndex];
@@ -56,7 +56,7 @@ function selectCar(e) {
 
 function addToInputs(chosenCar) {
     //add chosen cars value to inputs
-    carId.value = chosenCar.id;
+    // carId.value = chosenCar.id;
     carPlate.value = chosenCar.plates;
     carPrice.value = chosenCar.price;
     showCarImage(chosenCar);
@@ -117,12 +117,14 @@ function carColorChange(e) {
 }
 
 function hide(){
+    submitBtn.style.display = "none";
     hidden.forEach(function(hidd){
         hidd.style.display = "none";
     });
 }
 
 function show(){
+    submitBtn.style.display = "block";
     hidden.forEach(function(hidd){
         hidd.style.display = "block";
     });
