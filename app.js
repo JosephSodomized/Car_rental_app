@@ -1,4 +1,4 @@
-let name, id, plates, price, newName;
+let name, id, plates, price, newName, carColor;
 
 //car builder
 function newCar(name, id, plates, price) {
@@ -65,25 +65,21 @@ function addToInputs(chosenCar) {
 
 function showCarImage(chosenCar) {
     if (chosenCar.name == "Mercedes") {
-        ;
         carImg.src = "mercedes-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
     else if (chosenCar.name == "Mitsubishi") {
-        ;
         carImg.src = "mitsubishi-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
     else if (chosenCar.name == "Jaguar") {
-        ;
         carImg.src = "jaguar-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
     }
     else if (chosenCar.name == "Fiat") {
-        ;
         carImg.src = "fiat-white.png"
         carImg.style.display = "block"
         setCarName(chosenCar.name.toLowerCase());
@@ -106,14 +102,17 @@ function carColorChange(e) {
     if (e.target.id == "white") {
         carImg.src = newName + "-" + button1.id + ".png";
         console.log(carImg.src);
+        setColor(button1.id);
     }
     else if (e.target.id == "red") {
         carImg.src = newName + "-" + button2.id + ".png";
         console.log(carImg.src);
+        setColor(button2.id);
     }
     else {
         carImg.src = newName + "-" + button3.id + ".png";
         console.log(carImg.src);
+        setColor(button3.id);
     }
 }
 
@@ -131,28 +130,14 @@ function show(){
     });
 }
 
+function setColor(color){
+    this.color = color;
+    carColor = color;
+    return carColor;
+}
+
+
 function checkOut(){
-    //do poprawy shit done...
-    var carColor = carImg.src;
+    console.log(carColor);
     
-    if(newName == "jaguar"){
-    var cut = carColor.slice(29,carColor.length-4);
-    console.log(cut);
-    }
-    else if(newName == "lambo"){
-        var cut = carColor.slice(28,carColor.length-4);
-        console.log(cut); 
-    }
-    else if(newName == "fiat"){
-        var cut = carColor.slice(27,carColor.length-4);
-        console.log(cut); 
-    }
-    else if(newName == "mercedes"){
-        var cut = carColor.slice(31,carColor.length-4);
-        console.log(cut); 
-    }
-    else if(newName == "mitsubishi"){
-        var cut = carColor.slice(33,carColor.length-4);
-        console.log(cut); 
-    }
 }
